@@ -1,10 +1,21 @@
 
+import { useState } from 'react';
 import './App.css';
 import City from "./assets/city.jpg"
+import CarDetails from './components/CarDetails';
+import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
+import ShowUserName from './components/ShowUserName';
 
 function App() {
+  const [userName] = useState("ivan");
+  const cars = [
+    {id: 1, brand: "Ferrari", color:"Amarela", newCar: true, km: 0},
+    {id: 1, brand: "Kia", color:"Branco", newCar: false, km: 34433},
+    {id: 1, brand: "Renault", color:"Azul", newCar: false, km: 234},
+  ];
+
   return (
     <div className="App">
 
@@ -20,6 +31,23 @@ function App() {
 
       <ManageData/>
       <ListRender/>
+      <ConditionalRender/>
+      {/*Props*/}
+      <ShowUserName name= {userName}/>
+      {/* Destructuring */}
+      <CarDetails brand = "VW" km={100000} color = "azul"  newCar = {false}/>
+      {/* Reaproveitamento */}
+      <CarDetails brand = "VW" km={0} color = "Vermelha"  newCar = {true} />
+      <CarDetails brand = "VW" km={4500} color = "Branco" newCar = {false} />
+      {/* Loop em Array de Objects */}
+      {cars.map((car) => (
+        <CarDetails 
+        brand={car.brand}
+        color={car.color}
+        km= {car.km}
+        newCar= {car.newCar}
+        />
+      ))}
     </div>
   );
 }
