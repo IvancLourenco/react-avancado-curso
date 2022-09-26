@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import {useState } from 'react';
 import './App.css';
 import City from "./assets/city.jpg"
 import CarDetails from './components/CarDetails';
@@ -7,6 +7,8 @@ import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
+import Fragment from './components/Fragment';
+import Container from './components/Container';
 
 function App() {
   const [userName] = useState("ivan");
@@ -34,11 +36,14 @@ function App() {
       <ConditionalRender/>
       {/*Props*/}
       <ShowUserName name= {userName}/>
+
       {/* Destructuring */}
       <CarDetails brand = "VW" km={100000} color = "azul"  newCar = {false}/>
+
       {/* Reaproveitamento */}
       <CarDetails brand = "VW" km={0} color = "Vermelha"  newCar = {true} />
       <CarDetails brand = "VW" km={4500} color = "Branco" newCar = {false} />
+
       {/* Loop em Array de Objects */}
       {cars.map((car) => (
         <CarDetails 
@@ -46,8 +51,23 @@ function App() {
         color={car.color}
         km= {car.km}
         newCar= {car.newCar}
-        />
+        />  
       ))}
+
+      {/* Fragment*/}
+      <Fragment propFragment = "Funcionou?"/>
+
+      {/* Children*/}
+      <Container myValue = "testing">
+        <p> Esse é o conteúdo</p>
+      </Container>
+
+      <Container myValue = "testing 2">
+        <h5>Esse e o teste</h5>
+      </Container>
+      
+      
+
     </div>
   );
 }
