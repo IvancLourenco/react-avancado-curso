@@ -9,14 +9,19 @@ import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
 import Fragment from './components/Fragment';
 import Container from './components/Container';
+import { ExecuteFunction } from './components/ExecuteFunction';
 
 function App() {
   const [userName] = useState("ivan");
   const cars = [
     {id: 1, brand: "Ferrari", color:"Amarela", newCar: true, km: 0},
-    {id: 1, brand: "Kia", color:"Branco", newCar: false, km: 34433},
-    {id: 1, brand: "Renault", color:"Azul", newCar: false, km: 234},
+    {id: 2, brand: "Kia", color:"Branco", newCar: false, km: 34433},
+    {id: 3, brand: "Renault", color:"Azul", newCar: false, km: 234},
   ];
+
+  const showMessage = () => {
+    console.log("Evento do Component pai")
+  }
 
   return (
     <div className="App">
@@ -47,6 +52,7 @@ function App() {
       {/* Loop em Array de Objects */}
       {cars.map((car) => (
         <CarDetails 
+        key={car.id}
         brand={car.brand}
         color={car.color}
         km= {car.km}
@@ -66,6 +72,8 @@ function App() {
         <h5>Esse e o teste</h5>
       </Container>
       
+      {/* Executar função*/}
+      <ExecuteFunction myFunction = {showMessage}/>
       
 
     </div>
