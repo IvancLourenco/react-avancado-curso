@@ -10,6 +10,7 @@ import ShowUserName from './components/ShowUserName';
 import Fragment from './components/Fragment';
 import Container from './components/Container';
 import { ExecuteFunction } from './components/ExecuteFunction';
+import UserDetails from './components/UserDetails';
 
 function App() {
   const [userName] = useState("ivan");
@@ -17,6 +18,12 @@ function App() {
     {id: 1, brand: "Ferrari", color:"Amarela", newCar: true, km: 0},
     {id: 2, brand: "Kia", color:"Branco", newCar: false, km: 34433},
     {id: 3, brand: "Renault", color:"Azul", newCar: false, km: 234},
+  ];
+
+  const users = [
+    {id: 1, name: "Fabiana",job:" Professora", age: 37},
+    {id: 2, name: "Kamila", job:" Farmaceutica", age: 17},
+    {id: 3, name: "ivan", job:" Desenvolvedor", age: 23},
   ];
 
   const showMessage = () => {
@@ -74,6 +81,16 @@ function App() {
       
       {/* Executar função*/}
       <ExecuteFunction myFunction = {showMessage}/>
+
+      {/* Exercicio*/}
+
+        {users.map((user) =>(
+          <UserDetails  
+          key={user.id} 
+          name={user.name} 
+          age= {user.age} 
+          job= {user.job}/>
+        ))}
       
 
     </div>
